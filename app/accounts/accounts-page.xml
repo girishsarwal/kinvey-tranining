@@ -1,0 +1,38 @@
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Accounts"></Label>
+    </ActionBar>
+
+    <GridLayout class="page-content">
+        <ListView items="{{ accounts }}"  separatorColor="#000000" itemTap="onAccountItemTap">
+            <ListView.itemTemplate>
+                <GridLayout columns="75,*" rows="*">
+                    <Label text="&#xf007;" class="fas" row="0" col="0" style="text-align: center; vertical-align: center; color: #737373; font-size: 20;" />
+                        <StackLayout orientation="vertical" textAlignment="right" row="0" col="1">
+                        <Label text="{{ accountname }}" textAlignment="right" fontAttributes="Bold"/>
+                        <Label text="{{ accountcompany }}" textAlignment="right" style="font-size:15px"/>
+                        </StackLayout>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>

@@ -1,0 +1,42 @@
+<Page
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Tasks"></Label>
+    </ActionBar>
+
+        <GridLayout  rows="auto, *" columns="90, 90, 90, 90, *">
+            
+            <Button class="my-button" text="find" tap="{{ refreshMe }}" row="0" col="0"></Button>
+            <Button class="my-button" text="pull" tap="{{ pullMe }}" row="0" col="1"></Button>
+            <Button class="my-button" text="push" tap="{{ pushMe }}" row="0" col="2"></Button>
+            <Button class="my-button" text="sync" tap="{{ syncMe }}" row="0" col="3"></Button>
+            <ListView id="listview" items="{{ tasks }}" separatorColor="#000000" row="1" colSpan="5">
+                <ListView.itemTemplate>
+                    <GridLayout columns="75,auto" rows="auto, auto, auto">
+                        <Label text="&#xf0ae;" class="fas" row="1" col="0" style="color: #737373; font-size: 20;" />
+                        <Image src="{{ imageUrl }}" row="0" col="0"/>
+                        <Label text="{{ action }}"  fontAttributes="Bold" row="0" col="1"/>
+                        <Label text="{{ duedate }}"  style="font-size:15px" row="1" col="1"/>
+                        <Label text="{{ completed }}"  style="font-size:15px" row="2" col="1"/>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </GridLayout>
+</Page>

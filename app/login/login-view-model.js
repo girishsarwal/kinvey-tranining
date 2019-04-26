@@ -8,8 +8,8 @@ const topmost = require("tns-core-modules/ui/frame").topmost;
 function LoginViewModel() {
     const viewModel = observableModule.fromObject({
         email: "js@nativescript.com",
-        password: "nscore",
-        confirmPassword: "nscore",
+        password: "testing",
+        confirmPassword: "testing",
         isLoggingIn: true,
         toggleForm() {
             this.isLoggingIn = !this.isLoggingIn;
